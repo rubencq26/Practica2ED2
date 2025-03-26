@@ -58,26 +58,26 @@ void anchura(const Arbin<T>& a) {
 /***************************************************************************/
 //Ejercicio 1
 template <typename T>
-int getNumHojas(const Arbin<T>& a, const typename Arbin<T>::Iterador& r){
+int numHojas(const Arbin<T>& a, const typename Arbin<T>::Iterador& r){
     if (r.arbolVacio()){
         return 0;
     }
     if(a.subIzq(r).arbolVacio() && a.subDer(r).arbolVacio()){
         return 1;
     }
-    return getNumHojas(a, a.subIzq(r)) + getNumHojas(a, a.subDer(r));
+    return numHojas(a, a.subIzq(r)) + numHojas(a, a.subDer(r));
 
 }
 
 template <typename T>
-int getNumHojas(const Arbin<T>& a){
-    return getNumHojas(a, a.getRaiz());
+int numHojas(const Arbin<T>& a){
+    return numHojas(a, a.getRaiz());
 }
 
 /****************************************************************************/
 //Ejercicio 2
 template <typename T>
-Arbin<T> copiaSimetrica(const Arbin<T>& a, const typename Arbin<T>::Iterador& r) {
+Arbin<T> simetrico(const Arbin<T>& a, const typename Arbin<T>::Iterador& r) {
     if (r.arbolVacio()) { // Verificamos directamente el iterador en lugar del árbol
         return Arbin<T>(); // Si el nodo es vacío, devolvemos un árbol vacío
     }
@@ -85,14 +85,14 @@ Arbin<T> copiaSimetrica(const Arbin<T>& a, const typename Arbin<T>::Iterador& r)
     // Construimos el nuevo árbol invirtiendo los subárboles
     return Arbin<T>(
         r.observar(), // Copiamos el valor del nodo actual
-        copiaSimetrica(a, a.subDer(r)), // El subárbol derecho se convierte en el izquierdo
-        copiaSimetrica(a, a.subIzq(r))  // El subárbol izquierdo se convierte en el derecho
+        simetrico(a, a.subDer(r)), // El subárbol derecho se convierte en el izquierdo
+        simetrico(a, a.subIzq(r))  // El subárbol izquierdo se convierte en el derecho
     );
 }
 
 template <typename T>
-Arbin<T> copiaSimetrica(const Arbin<T>& a){
-    return copiaSimetrica(a, a.getRaiz());
+Arbin<T> simetrico(const Arbin<T>& a){
+    return simetrico(a, a.getRaiz());
 }
 
 
@@ -118,26 +118,29 @@ void recorridoZigzag(const Arbin<T>& a, char sentido){
 
 /******************************************************************************/
 //Ejercicio 4
-template <typename T>
-bool arbolEquilibrado(const Arbin<T>& a,const typename Arbin<T>::Iterador& r){
 
+template <typename T>
+int contarNodos(const Arbin<T>& a, const typename Arbin<T>::Iterador& r){
     if(r.arbolVacio()){
+        return 0;
+    }
+    return(1 + contarNodos(a, a.subIzq(r)) + contarNodos(a, a.subDer(r)));
+}
+
+
+template <typename T>
+bool compensado(const Arbin<T>& a,const typename Arbin<T>::Iterador& r){
+    if(r.arbolVacio() || (a.subDer(r).arbolVacio() && a.subIzq(r).arbolVacio())){
         return true;
     }
-
-    int alturaizq = a.subIzq(r).altura();
-    int alturader = a.subDer(r).altura();
-
-    if(alturader - alturaizq  >1 || alturader - alturaizq < -1){
-        return false;
-    }
-
-    return arbolEquilibrado(a, a.subIzq(r)) && arbolEquilibrado(a, a.subDer(r));
+    return ( abs(contarNodos(a, a.subIzq(r)) - contarNodos(a, a.subDer(r))) <= 1 &&
+         compensado(a, a.subIzq(r)) &&
+         compensado(a, a.subDer(r)));
 }
 
 template <typename T>
-bool arbolEquilibrado(const Arbin<T>& a){
-    return arbolEquilibrado(a,a.getRaiz());
+bool compensado(const Arbin<T>& a){
+    return compensado(a,a.getRaiz());
 }
 
 
@@ -192,8 +195,10 @@ int main(int argc, char *argv[])
                                                   Arbin<int>(4, Arbin<int>(), Arbin<int>()))));
 
     ABB<int> BB6, BB7;
-    cout<<arbolEquilibrado(A);
- /*
+
+
+
+
     // NUMERO HOJAS //
     cout << "Num. hojas del arbol B: " << numHojas(B) << endl;
     cout << "Num. hojas del arbol E: " << numHojas(E) << endl << endl;
@@ -211,8 +216,8 @@ int main(int argc, char *argv[])
     cout << "Recorrido en zigzag I de B:\n";
     recorridoZigzag(B, 'I');
     cout << endl;
-    cout << "Recorrido en zigzag D de C:\n";
-    recorridoZigzag(C, 'D');
+    cout << "Recorrido en zigzag D de A:\n";
+    recorridoZigzag(A, 'D');
     cout << endl << endl;
 
 
@@ -221,7 +226,7 @@ int main(int argc, char *argv[])
     cout << (compensado(A) ? " SI" : " NO") << endl;
     cout << "Esta B compensado?:";
     cout << (compensado(B) ? " SI" : " NO") << endl << endl;
-
+    /*
     // PALABRAS DE UN ARBOL //
     cout << "PALABRAS DE A:\n";
     palabras(E);

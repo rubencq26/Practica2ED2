@@ -15,9 +15,9 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="C:/Users/usuario/Desktop/Practica2/nodoB.o" />
-					<Add library="C:/Users/usuario/Desktop/Practica2/arbin.o" />
-					<Add library="C:/Users/usuario/Desktop/Practica2/abb.o" />
+					<Add library="C:/Users/usuario/Documents/GitHub/Practica2ED2/Practica2/abb.o" />
+					<Add library="C:/Users/usuario/Documents/GitHub/Practica2ED2/Practica2/arbin.o" />
+					<Add library="C:/Users/usuario/Documents/GitHub/Practica2ED2/Practica2/nodoB.o" />
 				</Linker>
 			</Target>
 			<Target title="Release">

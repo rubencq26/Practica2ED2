@@ -146,6 +146,29 @@ bool compensado(const Arbin<T>& a){
 
 /*****************************************************************************/
 //Ejercicio 5
+template <typename T>
+void palabras(Arbin<T>& a){
+    string p;
+    palabras(a, a.getRaiz(), p);
+}
+
+template <typename T>
+void palabras(Arbin<T>& a, typename Arbin<T>::Iterador r, string p){
+    if(!r.arbolVacio()){
+        p = p + r.observar();
+        palabras(a, a.subIzq(r), p);
+        palabras(a, a.subDer(r), p);
+
+        if(a.subDer(r).arbolVacio() && a.subIzq(r).arbolVacio()){
+            p = p + "\n";
+            cout<<p;
+        }
+
+    }
+
+}
+
+
 
 
 /******************************************************************************/
@@ -226,14 +249,14 @@ int main(int argc, char *argv[])
     cout << (compensado(A) ? " SI" : " NO") << endl;
     cout << "Esta B compensado?:";
     cout << (compensado(B) ? " SI" : " NO") << endl << endl;
-    /*
+
     // PALABRAS DE UN ARBOL //
     cout << "PALABRAS DE A:\n";
     palabras(E);
     cout << "PALABRAS DE B:\n";
     palabras(B);
     cout << endl;
-
+    /*
     // SIGUIENTE MAYOR
     BB6.insertar(8); BB6.insertar(3); BB6.insertar(10); BB6.insertar(1); BB6.insertar(6);
     BB6.insertar(14); BB6.insertar(4); BB6.insertar(7); BB6.insertar(13);

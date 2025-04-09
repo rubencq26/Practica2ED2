@@ -147,12 +147,6 @@ bool compensado(const Arbin<T>& a){
 /*****************************************************************************/
 //Ejercicio 5
 template <typename T>
-void palabras(Arbin<T>& a){
-    string p;
-    palabras(a, a.getRaiz(), p);
-}
-
-template <typename T>
 void palabras(Arbin<T>& a, typename Arbin<T>::Iterador r, string p){
     if(!r.arbolVacio()){
         p = p + r.observar();
@@ -163,17 +157,38 @@ void palabras(Arbin<T>& a, typename Arbin<T>::Iterador r, string p){
             p = p + "\n";
             cout<<p;
         }
+    }
+}
+
+template <typename T>
+void palabras(Arbin<T>& a){
+string p;
+palabras(a, a.getRaiz(), p);
+}
+
+/******************************************************************************/
+//Ejercicio 6
+
+int siguienteMayor(ABB<int>& a, typename Arbin<int>::Iterador r, int& x){
+    if(a.esVacio() || a.maximo() <= x){
+        throw NoHaySiguienteMayor();
+    }
+
+
+    if(!r.arbolVacio()){
+        siguienteMayor(a, a.subIzq(r), x);
+        if(x < r.observar()){
+            return r.observar();
+        }
+        siguienteMayor(a, a.subDer(r), x);
 
     }
 
 }
 
-
-
-
-/******************************************************************************/
-//Ejercicio 6
-
+int siguienteMayor(ABB<int>& a, int x){
+    return siguienteMayor(a, a.getRaiz(), x);
+}
 
 
 /******************************************************************************/
@@ -256,7 +271,7 @@ int main(int argc, char *argv[])
     cout << "PALABRAS DE B:\n";
     palabras(B);
     cout << endl;
-    /*
+
     // SIGUIENTE MAYOR
     BB6.insertar(8); BB6.insertar(3); BB6.insertar(10); BB6.insertar(1); BB6.insertar(6);
     BB6.insertar(14); BB6.insertar(4); BB6.insertar(7); BB6.insertar(13);
@@ -271,7 +286,7 @@ int main(int argc, char *argv[])
     {
         cout << e.Mensaje() << endl << endl;
     }
-
+    /*
     // POSICION INORDEN //
     BB7.insertar(5); BB7.insertar(1); BB7.insertar(3); BB7.insertar(8); BB7.insertar(6);
     cout << "Posicion Inorden en BB7 de 3: ";

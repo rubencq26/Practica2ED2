@@ -193,7 +193,31 @@ int siguienteMayor(ABB<int>& a, int x){
 
 /******************************************************************************/
 //Ejercicio 7
+int posicionInorden(ABB<int>& a, typename Arbin<int>::Iterador r, int x, int& contador, int& posicion){
+    if(posicion != 0){
+        return posicion;
+    }
 
+    if(!r.arbolVacio()){
+
+        posicionInorden(a, a.subIzq(r), x, contador, posicion);
+        if(r.observar() == x){
+            posicion = contador;
+        }else{
+        contador++;
+        }
+        posicionInorden(a, a.subDer(r), x, contador, posicion);
+
+    }
+
+}
+
+int posicionInorden(ABB<int>& a,int x){
+    int contador = 1;
+    int posicion = 0;
+    posicionInorden(a, a.getRaiz(), x, contador, posicion);
+    return posicion;
+}
 
 /******************************************************************************/
 //Ejercicio 8
@@ -286,7 +310,7 @@ int main(int argc, char *argv[])
     {
         cout << e.Mensaje() << endl << endl;
     }
-    /*
+
     // POSICION INORDEN //
     BB7.insertar(5); BB7.insertar(1); BB7.insertar(3); BB7.insertar(8); BB7.insertar(6);
     cout << "Posicion Inorden en BB7 de 3: ";
@@ -296,7 +320,7 @@ int main(int argc, char *argv[])
     cout << endl << "Posicion Inorden en BB7 de 7: ";
     cout << posicionInorden(BB7, 7);
     cout << endl << endl;
-
+/*
     // SUMA CAMINO
     cout << "Hay un camino de suma 26 en F?:";
     cout << (haySumaCamino(F, 26) ? " SI" : " NO") << endl;

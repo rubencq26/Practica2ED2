@@ -15,9 +15,9 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="D:/Universidad/ED2/Practica2ED2/Practica2/abb.o" />
-					<Add library="D:/Universidad/ED2/Practica2ED2/Practica2/arbin.o" />
-					<Add library="D:/Universidad/ED2/Practica2ED2/Practica2/nodoB.o" />
+					<Add library="C:/Users/usuario/Documents/GitHub/Practica2ED2/Practica2/abb.o" />
+					<Add library="C:/Users/usuario/Documents/GitHub/Practica2ED2/Practica2/arbin.o" />
+					<Add library="C:/Users/usuario/Documents/GitHub/Practica2ED2/Practica2/nodoB.o" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -38,9 +38,9 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Linker>
-			<Add library="D:/Universidad/ED2/Practica2ED2/Practica2/abb.o" />
-			<Add library="D:/Universidad/ED2/Practica2ED2/Practica2/arbin.o" />
-			<Add library="D:/Universidad/ED2/Practica2ED2/Practica2/nodoB.o" />
+			<Add library="C:/Users/usuario/Documents/GitHub/Practica2ED2/Practica2/abb.o" />
+			<Add library="C:/Users/usuario/Documents/GitHub/Practica2ED2/Practica2/arbin.o" />
+			<Add library="C:/Users/usuario/Documents/GitHub/Practica2ED2/Practica2/nodoB.o" />
 		</Linker>
 		<Unit filename="abb.h" />
 		<Unit filename="arbin.h" />

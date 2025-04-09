@@ -35,7 +35,7 @@
 1740568013 c:\users\usuario\desktop\practica2\excep_ej6.h
 	"excepcion.h"
 
-1743614930 source:c:\users\usuario\documents\github\practica2ed2\practica2\practica2.cpp
+1744219872 source:c:\users\usuario\documents\github\practica2ed2\practica2\practica2.cpp
 	<iostream>
 	<cstdlib>
 	<queue>
@@ -43,29 +43,29 @@
 	"abb.h"
 	"Excep_Ej6.h"
 
-1743613774 c:\users\usuario\documents\github\practica2ed2\practica2\arbin.h
+1744218489 c:\users\usuario\documents\github\practica2ed2\practica2\arbin.h
 	"nodoB.h"
 	"excep_arbin.h"
 
-1743613774 c:\users\usuario\documents\github\practica2ed2\practica2\nodob.h
+1744218489 c:\users\usuario\documents\github\practica2ed2\practica2\nodob.h
 	<stdlib.h>
 
-1743613774 c:\users\usuario\documents\github\practica2ed2\practica2\excep_arbin.h
+1744218489 c:\users\usuario\documents\github\practica2ed2\practica2\excep_arbin.h
 	"excepcion.h"
 
-1743613774 c:\users\usuario\documents\github\practica2ed2\practica2\excepcion.h
+1744218489 c:\users\usuario\documents\github\practica2ed2\practica2\excepcion.h
 	<string>
 	<stdexcept>
 
-1743613774 c:\users\usuario\documents\github\practica2ed2\practica2\abb.h
+1744218489 c:\users\usuario\documents\github\practica2ed2\practica2\abb.h
 	"nodoB.h"
 	"excep_abb.h"
 	"arbin.h"
 
-1743613774 c:\users\usuario\documents\github\practica2ed2\practica2\excep_abb.h
+1744218489 c:\users\usuario\documents\github\practica2ed2\practica2\excep_abb.h
 	"excepcion.h"
 
-1743613774 c:\users\usuario\documents\github\practica2ed2\practica2\excep_ej6.h
+1744218489 c:\users\usuario\documents\github\practica2ed2\practica2\excep_ej6.h
 	"excepcion.h"
 
 1744188896 source:d:\universidad\ed2\practica2ed2\practica2\practica2.cpp

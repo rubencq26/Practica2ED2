@@ -221,7 +221,33 @@ int posicionInorden(ABB<int>& a,int x){
 
 /******************************************************************************/
 //Ejercicio 8
+void haySumaCamino(const Arbin<int>& a, typename Arbin<int>::Iterador r, int suma, int sumador, bool& cumple){
+    if(cumple == true){
+        return;
+    }
 
+    if(a.esVacio() && suma == 0){
+        cumple = true;
+    }
+    if(!r.arbolVacio()){
+        if(a.subIzq(r).arbolVacio() && a.subDer(r).arbolVacio()){
+            if(sumador + r.observar() == suma){
+                cumple = true;
+            }
+        }else{
+         sumador += r.observar();
+        haySumaCamino(a, a.subIzq(r), suma, sumador, cumple);
+        haySumaCamino(a, a.subDer(r), suma, sumador, cumple);
+        }
+    }
+}
+
+bool haySumaCamino(const Arbin<int>&a, int suma){
+    bool cumple = false;
+    int sumador = 0;
+    haySumaCamino(a, a.getRaiz(), suma, sumador, cumple);
+    return cumple;
+}
 
 
 /****************************************************************************/
@@ -320,13 +346,13 @@ int main(int argc, char *argv[])
     cout << endl << "Posicion Inorden en BB7 de 7: ";
     cout << posicionInorden(BB7, 7);
     cout << endl << endl;
-/*
+
     // SUMA CAMINO
     cout << "Hay un camino de suma 26 en F?:";
     cout << (haySumaCamino(F, 26) ? " SI" : " NO") << endl;
     cout << "Hay un camino de suma 9 en F?:";
     cout << (haySumaCamino(F, 9) ? " SI" : " NO") << endl;
-*/
+
 
     system("PAUSE");
     return 0;
